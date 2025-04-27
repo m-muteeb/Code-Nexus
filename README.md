@@ -35,5 +35,5 @@ A web-based tool that uses TensorFlow.js (MobileNet) and Firebase to detect whet
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/yourusername/fake-product-detector.git
+git clone https://github.com/m-muteeb/Code-Nexus.git
 cd fake-product-detector
