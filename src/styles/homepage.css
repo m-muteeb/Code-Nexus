@@ -1,0 +1,41 @@
+.authenticity-section {
+    background: #f9f9f9;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  .authenticity-form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .authenticity-form input[type="text"],
+  .authenticity-form input[type="file"] {
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+  }
+  
+  .check-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    background-color: #024286;
+    border: none;
+  }
+  
+  .check-button:hover {
+    background-color: #0056b3;
+  }
+  

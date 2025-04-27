@@ -1,0 +1,54 @@
+.hero-section {
+    padding: 100px 0;
+    /* background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); */
+  }
+  
+  .text-content {
+    padding-right: 30px;
+  }
+  
+  .text-content h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #212529;
+  }
+  
+  .text-content p {
+    font-size: 1.1rem;
+    color: #6c757d;
+    line-height: 1.7;
+  }
+  
+  /* Carousel Image Styling */
+  .carousel-image {
+    width: 50%;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  
+  /* Make Carousel and Text Responsive */
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 60px 0;
+    }
+    .text-content {
+      text-align: center;
+      padding-right: 0;
+      margin-bottom: 30px;
+    }
+    .carousel-content {
+      text-align: center;
+    }
+    .text-content h1 {
+      font-size: 2rem;
+    }
+    .text-content p {
+      font-size: 1rem;
+    }
+    .carousel-image {
+      height: 250px;
+    }
+  }
+  
