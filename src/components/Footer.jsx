@@ -8,7 +8,10 @@ const Footer = () => (
     <Container>
       <Row>
         <Col>
-          <p>&copy; 2025 AI Fake Ad Checker. All rights reserved.</p>
+          <p>&copy; 2025 AI Fake Logo Checker. All rights reserved.</p>
+          <p>
+            Developed by <a href="https://code-nexus-pk.netlify.app/" target="_blank" rel="noopener noreferrer" className="text-white">Code Nexus</a>
+          </p>
         </Col>
       </Row>
     </Container>

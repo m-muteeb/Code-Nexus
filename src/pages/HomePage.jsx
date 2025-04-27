@@ -1,3 +1,4 @@
+// src/pages/HomePage.jsx
 import React, { useState, useRef, useEffect } from 'react';
 import { Container, Row, Col, Alert, Button } from 'react-bootstrap';
 import * as tf from '@tensorflow/tfjs';
@@ -6,6 +7,8 @@ import { auth } from '../service/firebase'; // Import auth
 import ResultDisplay from '../components/ResultDisplay';
 import HistoryList from '../components/HistoryList';
 import { saveHistory } from '../service/firebase';
+import Hero from '../components/hero';  // Ensure the Hero component is imported
+import Features from '../components/feature';  
 
 const HomePage = () => {
   const [result, setResult] = useState(null);
@@ -81,80 +84,108 @@ const HomePage = () => {
   };
 
   return (
-    <Container className="mt-5 pt-3" style={{ maxWidth: '800px' }}>
-      <Row>
-        <Col>
-          <h2 className="text-center mb-4 mt-3 page-heading">
-            Fake Product Detector
-          </h2>
+    <>
+      <Hero /> {/* This is the Hero section */}
+      <Container className="mt-5 pt-3" style={{ maxWidth: '800px' }}>
+        <Row>
+          <Col>
+            <h2 className="text-center mb-4 mt-3 page-heading">
+              Fake Product Detector
+            </h2>
 
-          {/* Image Upload */}
-          <div
-            className="border rounded p-3 mb-3 upload-container"
-          >
-            {!user && (
-              <Alert variant="warning" className="text-center">
-                Please <Button variant="link" onClick={() => alert('Please login to upload and check products.')}>login</Button> to upload and check products.
-              </Alert>
-            )}
+            {/* Image Upload */}
+            <div className="border rounded p-3 mb-3 upload-container">
+              {!user && (
+                <Alert variant="warning" className="text-center">
+                  Please{' '}
+                  <Button
+                    variant="link"
+                    onClick={() =>
+                      alert('Please login to upload and check products.')
+                    }
+                  >
+                    login
+                  </Button>{' '}
+                  to upload and check products.
+                </Alert>
+              )}
 
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              ref={fileInputRef}
-              className="d-none"
-              id="imageUpload"
-              disabled={!user}
-            />
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                ref={fileInputRef}
+                className="d-none"
+                id="imageUpload"
+                disabled={!user}
+              />
 
-            <label
-              htmlFor="imageUpload"
-              className={`btn ${user ? 'btn-primary' : 'btn-secondary'} mb-3 upload-btn`}
-              style={{
-                display: 'block',
-                width: '100%',
-                textAlign: 'center',
-                cursor: user ? 'pointer' : 'not-allowed',
-              }}
-            >
-              {preview ? 'Change Image' : 'Upload Product Image'}
-            </label>
+              <label
+                htmlFor="imageUpload"
+                className={`btn ${user ? 'btn-dark' : 'btn-secondary'} mb-3 upload-btn`}
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  textAlign: 'center',
+                  cursor: user ? 'pointer' : 'not-allowed',
+                  borderRadius: '25px',
+                  fontSize: '1.2rem',
+                }}
+              >
+                {preview ? 'Change Image' : 'Upload Product Image'}
+              </label>
 
-            {preview && user && (
-              <div className="text-center preview-container">
-                <img
-                  src={preview}
-                  alt="Preview"
-                  className="preview-image mb-3"
-                />
-                <Button
-                  variant="primary"
-                  onClick={handleCheckProduct}
-                  disabled={loading}
-                  className="full-width-btn"
-                >
-                  {loading ? 'Analyzing...' : 'Check Authenticity'}
-                </Button>
-              </div>
-            )}
-          </div>
+              {preview && user && (
+                <div className="text-center preview-container">
+                  <img
+                    src={preview}
+                    alt="Preview"
+                    className="preview-image mb-3"
+                    style={{
+                      width: '150px',
+                      height: '150px',
+                      borderRadius: '50%',
+                      objectFit: 'cover',
+                      boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+                    }}
+                  />
+                  <Button
+                    variant="dark"
+                    onClick={handleCheckProduct}
+                    disabled={loading}
+                    className="full-width-btn"
+                    style={{
+                      width: '100%',
+                      padding: '15px',
+                      fontSize: '1.1rem',
+                      borderRadius: '25px',
+                      marginTop: '20px',
+                    }}
+                  >
+                    {loading ? 'Analyzing...' : 'Check Authenticity'}
+                  </Button>
+                </div>
+              )}
+            </div>
 
-          {/* Results */}
-          {error && <Alert variant="danger">{error}</Alert>}
-          <ResultDisplay result={result} loading={loading} />
-        </Col>
-      </Row>
+            {/* Results */}
+            {error && <Alert variant="danger">{error}</Alert>}
+            <ResultDisplay result={result} loading={loading} />
+          </Col>
+        </Row>
 
-      <Row className="mt-4">
-        <Col>
-          <h5 className="border-bottom pb-2 recent-checks-heading">
-            Recent Checks
-          </h5>
-          <HistoryList />
-        </Col>
-      </Row>
-    </Container>
+        <Row className="mt-4">
+          <Col>
+            <h5 className="border-bottom pb-2 recent-checks-heading">
+              Recent Checks
+            </h5>
+            <HistoryList />
+          </Col>
+        </Row>
+      </Container>
+  
+      <Features />
+    </>
   );
 };
 
